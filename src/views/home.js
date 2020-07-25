@@ -29,7 +29,17 @@ class Home extends Component {
   }
   async componentDidMount() {
     await this.getDocuments();
+    this.cleanUsers();
     this.releaseUser();
+  }
+  cleanUsers = () =>{
+    axios.get(`${BASE_URL}/user/cleanup`)
+    .then((response)=>{
+      console.log("cleanup done");
+    })
+    .catch((error)=>{
+      console.log(error);
+    })
   }
   getDocuments =  () => {
     this.setState({ loading: true });
