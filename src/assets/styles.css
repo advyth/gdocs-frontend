@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+
+.login-col {
+  font-family: "Quicksand", sans-serif;
+  background: #b24592; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #f15f79,
+    #b24592
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #f15f79,
+    #b24592
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  text-align: center;
+  color: white;
+  margin: auto;
+  margin-top: 4%;
+  /* max-width: 30%; */
+  padding-top: 4vh;
+  padding-bottom: 10vh;
+  border-radius: 10px;
+}
+
+.login-input-fields {
+  font-weight: bold;
+  margin-top: 20px;
+  height: 35px;
+  width: 210px;
+  border-radius: 7px;
+  border: none;
+  text-align: center;
+  outline: none;
+}
+.icon-color-white {
+  fill: white;
+}
+
+.login-button {
+  font-family: "Quicksand", sans-serif;
+  border: none;
+  background-color: white;
+  height: 40px;
+  width: 150px;
+  margin-top: 4vh;
+  border-radius: 10px;
+  outline: none;
+  font-weight: bolder;
+}
+.login-button:focus {
+  outline: none;
+}
+.login-button:hover {
+  color: #b24592;
+  transition-duration: 0.4s;
+}
+#password-confirm-icon {
+  position: fixed;
+  margin-top: 27px;
+  margin-left: 5px;
+}
+.home-col {
+  font-family: "Quicksand", sans-serif;
+  color: white;
+  text-align: center;
+  margin: auto;
+  background: #b24592; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #f15f79,
+    #b24592
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #f15f79, #b24592);
+  margin-top: 1%;
+  padding-top: 5vh;
+  padding-bottom: 10vh;
+  border-radius: 10px;
+}
+.home-file-col {
+  margin: auto;
+  margin-top: 20px;
+  background-color: white;
+  border-radius: 10px;
+  padding-bottom: 30vh;
+  padding-top: 5vh;
+}
+.image-bg {
+  background-color: white;
+  border-radius: 100px;
+  height: 60px;
+  width: 60px;
+  margin: auto;
+}
+.image-bg img {
+  margin-top: 2px;
+}
+.file {
+  color: black;
+  padding: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.file:hover {
+  transition-duration: 0.4s;
+  background-color: #f15f79; /* fallback for old browsers */
+  /* Chrome 10-25, Safari 5.1-6 */
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: white;
+}
+.spinner-border {
+  color: #f15f79;
+}
