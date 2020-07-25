@@ -65,7 +65,7 @@ function Register() {
           <input
             className="login-input-fields"
             type="text"
-            placeholder="email"
+            placeholder="username"
             onChange={handleEmail}
           />
           <br />

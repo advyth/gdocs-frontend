@@ -28,27 +28,37 @@ function Login() {
   }
 
   const login = () => {
+    if(email != "" && password != ""){
+      setLoading(true);
+      let body = {
+        email: email,
+        password: password,
+      };
+      axios
+        .post(`${BASE_URL}/login`, body)
+        .then((response) => {
+            setLoading(false);
+            if(response.data.message == "success"){
+              setAuth("true");
+              history.push("/home",{
+                email : email,
+              });
+            }
+            else
+            {
+              alert("Invalid username/email");
+            }
+            console.log(response.data.message);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    else
+    {
+      alert("Invalid username/email");
+    }
     
-    setLoading(true);
-    let body = {
-      email: email,
-      password: password,
-    };
-    axios
-      .post(`${BASE_URL}/login`, body)
-      .then((response) => {
-          setLoading(false);
-          if(response.data.message == "success"){
-            setAuth("true");
-            history.push("/home",{
-              email : email,
-            });
-          }
-          console.log(response.data.message);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
   };
 
   return (
@@ -60,7 +70,7 @@ function Login() {
           <input
             className="login-input-fields"
             type="text"
-            placeholder="email"
+            placeholder="username"
             onChange={handleEmail}
             value={email}
           />

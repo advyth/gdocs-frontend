@@ -6,7 +6,7 @@ const Document = ({ documents, loading, onclick }) => {
   }
   var docList = documents.map(({ filename, author, id }) => {
     return (
-      <div onClick={()=>onclick(id)} key={id} className="file shadow-sm">
+      <div onClick={()=>onclick(id, filename)} key={id} className="file shadow-sm">
         <h6>{filename}</h6>
         <h6>{author}</h6>
       </div>

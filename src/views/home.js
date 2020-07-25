@@ -27,13 +27,14 @@ class Home extends Component {
       this.props.history.push("/login");
     }
   }
-  componentDidMount() {
-    this.getDocuments();
+  async componentDidMount() {
+    await this.getDocuments();
+    this.releaseUser();
   }
-  getDocuments = () => {
+  getDocuments =  () => {
     this.setState({ loading: true });
     var docArray = [];
-    axios
+     axios
       .get(`${BASE_URL}/document/`)
       .then((response) => {
         var documents = response.data;
@@ -46,7 +47,7 @@ class Home extends Component {
         console.log(error);
       });
   };
-  openDocument = (id) => {
+  openDocument = (id, name) => {
     const { email } = this.state;
     let body = {
       email: email,
@@ -59,6 +60,7 @@ class Home extends Component {
           this.props.history.push("/document", {
             email: email,
             fileid: id,
+            filename : name
           });
         }
       })
@@ -75,12 +77,27 @@ class Home extends Component {
       .post(`${BASE_URL}/user/offline`, body)
       .then((response) => {
         console.log(getAuth());
-        this.props.history.push("/login");
+        this.props.history.push("/");
       })
       .catch((error) => {
         console.log(error);
       });
+    
   };
+  releaseUser = async () =>{
+    let body = {
+      email: this.state.email,
+    };
+    axios
+      .post(`${BASE_URL}/user/offline`, body)
+      .then((response) => {
+        
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
 
   addDocument = () => {
     if (this.state.filename != "") {
