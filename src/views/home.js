@@ -24,7 +24,7 @@ class Home extends Component {
     };
     console.log(getAuth());
     if (getAuth() !== "true") {
-      this.props.history.push("/login");
+      this.props.history.push("/");
     }
   }
   async componentDidMount() {
