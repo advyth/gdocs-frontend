@@ -40,6 +40,10 @@ function Register() {
       email: email,
       password: password,
     };
+    if(email == "" || password == "" || (password != confirm_password))
+    {
+      alert("Invalid details");
+    }
     axios
       .post(`${BASE_URL}/register`, body)
       .then((response) => {
