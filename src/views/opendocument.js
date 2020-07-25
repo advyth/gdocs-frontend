@@ -30,14 +30,14 @@ class OpenDocument extends Component {
     axios
       .post(`${BASE_URL}/user/isalive`, body)
       .then((response) => {
-        console.log("polling done");
+        //console.log("polling done");
       })
       .catch((error) => {
         console.log(error);
       });
   };
   getUsers = () => {
-    console.log("get users called");
+    //console.log("get users called");
     let fileid = this.props.location.state.fileid;
     let userArray = [];
     let body = {
@@ -60,7 +60,7 @@ class OpenDocument extends Component {
     axios
       .get(`${BASE_URL}/user/cleanup`)
       .then((response) => {
-        console.log("cleanup done");
+        //console.log("cleanup done");
       })
       .catch((error) => {
         console.log(error);
