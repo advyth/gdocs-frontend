@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { ReactComponent as DocumentLogo } from "../assets/icons/article-24px.svg";
 import PasswordLogo from "../components/password_confirm_logo";
 import axios from "axios";
+import {useHistory} from "react-router-dom";
+import {setAuth, getAuth} from "../utils/globalstore";
 
 import { BASE_URL } from "../utils/api";
 
@@ -11,7 +13,7 @@ function Register() {
   const [confirm_password, setConfirm] = useState("");
   const [passwordSame, setPasswordSame] = useState(false);
   const [loading, setLoading] = useState(false);
-
+  let history = useHistory();
   const handleEmail = ({ target: { value } }) => {
     setEmail(value);
   };
@@ -43,6 +45,12 @@ function Register() {
       .then((response) => {
         console.log(response.data.message);
         setLoading(false);
+        if(response.data.message === "registered"){
+          setAuth("true");
+          history.push("/home",{
+            email : email
+          })
+        }
       })
       .catch((error) => {
         console.log(error);

@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { ReactComponent as DocumentLogo } from "../assets/icons/article-24px.svg";
 import axios from "axios";
+import {Redirect, useHistory, Link} from "react-router-dom";
+import {setAuth, getAuth} from "../utils/globalstore";
+
 
 import { BASE_URL } from "../utils/api";
 import { _DEV_ } from "../utils/env_vars";
@@ -9,6 +12,7 @@ function Login() {
   const [email, setEmail] = useState(_DEV_ ? "advythashok@gmail.com" : "");
   const [password, setPassword] = useState(_DEV_ ? "password" : "");
   const [loading, setLoading] = useState(false);
+  let history = useHistory();
 
   const handleEmail = ({ target: { value } }) => {
     setEmail(value);
@@ -17,7 +21,14 @@ function Login() {
     setPassword(value);
   };
 
+  if(getAuth() == "true"){
+    history.push("/home",{
+      email : email
+    })
+  }
+
   const login = () => {
+    
     setLoading(true);
     let body = {
       email: email,
@@ -27,7 +38,13 @@ function Login() {
       .post(`${BASE_URL}/login`, body)
       .then((response) => {
           setLoading(false);
-        console.log(response.data.message);
+          if(response.data.message == "success"){
+            setAuth("true");
+            history.push("/home",{
+              email : email,
+            });
+          }
+          console.log(response.data.message);
       })
       .catch((error) => {
         console.log(error);
@@ -67,6 +84,8 @@ function Login() {
               "Login"
             )}
           </button>
+          <br/>
+          <Link className="register-link" to="/register">Click here to Register</Link>
         </div>
       </div>
     </div>

@@ -48,6 +48,11 @@
   outline: none;
   font-weight: bolder;
 }
+.close-button{
+  margin-top: 10px;
+  background-color: #f15f79;
+  color: white;
+}
 .login-button:focus {
   outline: none;
 }
@@ -82,8 +87,8 @@
   margin-top: 20px;
   background-color: white;
   border-radius: 10px;
-  padding-bottom: 30vh;
-  padding-top: 5vh;
+  padding-bottom: 0vh;
+  padding-top: 1vh;
 }
 .image-bg {
   background-color: white;
@@ -102,6 +107,7 @@
   border-top-right-radius: 5px;
 }
 .file:hover {
+    cursor: pointer;
   transition-duration: 0.4s;
   background-color: #f15f79; /* fallback for old browsers */
   /* Chrome 10-25, Safari 5.1-6 */
@@ -110,4 +116,50 @@
 }
 .spinner-border {
   color: #f15f79;
+}
+.white-color{
+    color : white
+}
+.home-footer {
+  margin-top: 10px;
+  
+}
+.home-footer span{
+    margin-right: 15px;
+}
+.home-footer svg:hover{
+    cursor: pointer;
+}
+.online-user-col{
+    font-family: "Quicksand", sans-serif;
+    margin : auto;
+    margin-top: 100px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+    background: linear-gradient(to right, #f15f79, #b24592);
+    color : white
+
+}
+.avatar{
+    margin-right: 5px;
+}
+.img-bg{
+    border-radius: 100px;
+    height: 70px;
+    width: 70px;
+    background-color :white;
+    margin: auto;
+    text-align: center;
+}
+.home-avatar{
+    border-style: solid;
+    border-width: 5px;
+    border-color: black;
+
+
+}
+.register-link{
+  color : white;
+  font-size: 80%;
 }
