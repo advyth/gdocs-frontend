@@ -3,7 +3,7 @@ import { ReactComponent as DocumentLogo } from "../assets/icons/article-24px.svg
 import PasswordLogo from "../components/password_confirm_logo";
 import axios from "axios";
 import {useHistory} from "react-router-dom";
-import {setAuth, getAuth} from "../utils/globalstore";
+import {setAuth, getAuth, setEmailStorage} from "../utils/globalstore";
 
 import { BASE_URL } from "../utils/api";
 
@@ -51,6 +51,7 @@ function Register() {
         setLoading(false);
         if(response.data.message === "registered"){
           setAuth("true");
+          setEmailStorage(email);
           history.push("/home",{
             email : email
           })

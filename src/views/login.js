@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ReactComponent as DocumentLogo } from "../assets/icons/article-24px.svg";
 import axios from "axios";
 import {Redirect, useHistory, Link} from "react-router-dom";
-import {setAuth, getAuth} from "../utils/globalstore";
+import {setAuth, getAuth, setEmailStorage} from "../utils/globalstore";
 
 
 import { BASE_URL } from "../utils/api";
@@ -40,6 +40,8 @@ function Login() {
             setLoading(false);
             if(response.data.message == "success"){
               setAuth("true");
+              console.log(email);
+              setEmailStorage(email);
               history.push("/home",{
                 email : email,
               });

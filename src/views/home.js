@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import Modal from "react-modal";
 import { withRouter } from "react-router-dom";
-import { setAuth, getAuth } from "../utils/globalstore";
+import { setAuth, getAuth, getEmailStorage } from "../utils/globalstore";
 import { ReactComponent as LogoutLogo } from "../assets/icons/exit_to_app-24px.svg";
 import { ReactComponent as AddFile } from "../assets/icons/note_add-24px.svg";
 
@@ -142,7 +142,7 @@ class Home extends Component {
             <h4>Welcome {this.state.email}</h4>
 
             <img
-              src={`${AVATAR_URL}${this.state.email}`}
+              src={`${AVATAR_URL}${getEmailStorage()}`}
               height={60}
               width={60}
               className="rounded-circle shadow-lg home-avatar"
