@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import Avatar from "../components/avatar";
 import axios from "axios";
 import ReactInterval from "react-interval";
@@ -95,6 +95,9 @@ class OpenDocument extends Component {
           <div className="document-mast">
             <h2>{`People using ${this.props.location.state.filename}`}</h2>
             <h6>Hover over the user to see their id.</h6>
+            <Link style={{ color: "#b24592" }} to="/home">
+              <b>Go Home</b>
+            </Link>
           </div>
           <div className="col-md-11 online-user-col shadow-lg">
             <Avatar loading={this.state.loading} users={this.state.users} />

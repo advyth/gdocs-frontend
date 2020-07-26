@@ -17,10 +17,7 @@ class Home extends Component {
       loading: true,
       modalOpen: false,
       filename: "",
-      email:
-        typeof this.props.location.state === "undefined"
-          ? ""
-          : this.props.location.state.email,
+      email: typeof getEmailStorage() === "undefined" ? "" : getEmailStorage(),
     };
     console.log(getAuth());
     if (getAuth() !== "true") {
@@ -28,23 +25,28 @@ class Home extends Component {
     }
   }
   async componentDidMount() {
+    window.addEventListener("popstate", (e) => {
+      this.props.history.push("/home");
+    });
     await this.getDocuments();
     this.cleanUsers();
     this.releaseUser();
   }
-  cleanUsers = () =>{
-    axios.get(`${BASE_URL}/user/cleanup`)
-    .then((response)=>{
-      console.log("cleanup done");
-    })
-    .catch((error)=>{
-      console.log(error);
-    })
-  }
-  getDocuments =  () => {
+
+  cleanUsers = () => {
+    axios
+      .get(`${BASE_URL}/user/cleanup`)
+      .then((response) => {
+        console.log("cleanup done");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  getDocuments = () => {
     this.setState({ loading: true });
     var docArray = [];
-     axios
+    axios
       .get(`${BASE_URL}/document/`)
       .then((response) => {
         var documents = response.data;
@@ -70,7 +72,7 @@ class Home extends Component {
           this.props.history.push("/document", {
             email: email,
             fileid: id,
-            filename : name
+            filename: name,
           });
         }
       })
@@ -92,22 +94,18 @@ class Home extends Component {
       .catch((error) => {
         console.log(error);
       });
-    
   };
-  releaseUser = async () =>{
+  releaseUser = async () => {
     let body = {
       email: this.state.email,
     };
     axios
       .post(`${BASE_URL}/user/offline`, body)
-      .then((response) => {
-        
-      })
+      .then((response) => {})
       .catch((error) => {
         console.log(error);
       });
-  }
-
+  };
 
   addDocument = () => {
     if (this.state.filename != "") {
@@ -147,6 +145,10 @@ class Home extends Component {
               width={60}
               className="rounded-circle shadow-lg home-avatar"
             />
+
+            <h6 style={{ marginTop: "20px" }}>
+              Click on a file to see active users
+            </h6>
 
             <Modal
               isOpen={this.state.modalOpen}
@@ -190,7 +192,6 @@ class Home extends Component {
               </button>
             </Modal>
             <div className="col-md-11 home-file-col">
-              
               <Document
                 onclick={this.openDocument}
                 loading={this.state.loading}
@@ -215,6 +216,12 @@ class Home extends Component {
                 className="icon-color-white"
               />
               <span>Logout</span>
+              <h6 style={{ marginTop: "40px" }}>
+                Custom generated avatar by{" "}
+                <b>
+                  <i>adorable.io</i>
+                </b>
+              </h6>
             </div>
           </div>
         </div>
